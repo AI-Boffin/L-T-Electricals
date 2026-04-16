@@ -271,11 +271,12 @@
   }
 
   .hero-badge {
-    @apply h-8 rounded-full border border-white/12 bg-white/10 px-3 text-white backdrop-blur-sm;
+    @apply h-auto w-full max-w-full shrink whitespace-normal sm:w-fit sm:whitespace-nowrap inline-flex flex-wrap items-center justify-start gap-2 rounded-[1.2rem] border border-white/12 bg-white/10 px-3 py-2 text-sm leading-6 text-white backdrop-blur-sm;
   }
 
   .hero-proof-card {
-    @apply rounded-[1.35rem] border border-white/10 bg-white/8 px-4 py-4 text-sm leading-6 text-white/84 backdrop-blur-sm;
+    @apply w-full max-w-full rounded-[1.35rem] border border-white/10 bg-white/8 px-4 py-4 text-sm leading-6 text-white/84 backdrop-blur-sm;
+    overflow-wrap: anywhere;
   }
 
   .hero-proof-card-yellow {
@@ -452,6 +453,59 @@
   .float-card {
     animation: float-card 6s ease-in-out infinite;
   }
+
+  @media (max-width: 1023px) {
+    .hero-stack {
+      @apply mt-2 min-h-0;
+    }
+
+    .hero-wire {
+      display: none;
+    }
+
+    .media-shell {
+      @apply relative w-full;
+      inset: auto;
+      transform: none;
+    }
+
+    .media-shell-main,
+    .media-shell-alt {
+      width: 100%;
+      transform: none;
+    }
+
+    .media-shell-alt {
+      @apply mt-4;
+    }
+
+    .award-panel {
+      @apply relative left-auto bottom-auto mt-4 max-w-full;
+    }
+  }
+
+  @media (min-width: 600px) and (max-width: 1023px) {
+    .image-frame {
+      max-width: 42rem;
+      margin-inline: auto;
+    }
+
+    .media-shell-main {
+      max-width: 42rem;
+      margin-inline: auto;
+    }
+
+    .media-shell-alt {
+      max-width: 30rem;
+      margin-inline: auto;
+    }
+
+    .proof-tile-image {
+      min-height: 0;
+      aspect-ratio: 4 / 3;
+    }
+  }
+
 }
 
 @keyframes pulse-line {

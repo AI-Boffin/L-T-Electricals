@@ -5,9 +5,11 @@ import {
   Building2,
   CarFront,
   CheckCircle2,
+  ClipboardList,
   ExternalLink,
   Factory,
   FileCheck2,
+  HardHat,
   House,
   Lightbulb,
   Mail,
@@ -31,7 +33,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -76,6 +78,33 @@ const whyLiam = [
     description:
       "Clients can send images or short clips before a visit, which makes fault finding and quoting much faster.",
     icon: Upload,
+    accent: "bg-[#ef4444]",
+  },
+];
+
+const teamRoles = [
+  {
+    name: "Liam Crooks",
+    role: "Electrician",
+    description:
+      "Qualified for 15 years and on the tools long before that. Liam leads the work on site with a sharp eye for detail and a straight answer when clients need one.",
+    icon: Zap,
+    accent: "bg-[#2553ff]",
+  },
+  {
+    name: "Thara Crooks",
+    role: "Office & admin",
+    description:
+      "Thara keeps the diary, the messages and the follow-up moving, so jobs stay organised from first call to final aftercare.",
+    icon: ClipboardList,
+    accent: "bg-[#ffd33d]",
+  },
+  {
+    name: "Kian Duckworth",
+    role: "Apprentice",
+    description:
+      "Kian is learning the trade the right way: on real jobs, around proper standards, and with the same pride in neat work the business is known for.",
+    icon: HardHat,
     accent: "bg-[#ef4444]",
   },
 ];
@@ -248,14 +277,14 @@ export default function Home() {
     <main className="overflow-hidden">
       <Navbar />
 
-      <section className="relative isolate overflow-hidden pt-24">
+      <section className="relative isolate overflow-hidden pt-36 sm:pt-40 lg:pt-32">
         <div className="hero-orb hero-orb-blue" />
         <div className="hero-orb hero-orb-yellow" />
         <div className="hero-orb hero-orb-red" />
 
         <div className="mx-auto max-w-7xl px-6 pb-14 sm:px-8 lg:pb-20">
           <div className="grid gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
-            <div className="relative z-10 max-w-3xl text-white">
+            <div className="relative z-10 min-w-0 max-w-3xl text-white">
               <Badge className="hero-badge">
                 <Award className="size-3.5" />
                 Men In Business Award Winner - Sparky of The Year 2025
@@ -280,7 +309,7 @@ export default function Home() {
                   href="#contact"
                   className={cn(
                     buttonVariants({ size: "lg" }),
-                    "h-12 rounded-full bg-[#ffd33d] px-6 text-base text-[var(--brand-navy)] hover:bg-[#ffd33d]/92",
+                    "h-12 w-full justify-center rounded-full bg-[#ffd33d] px-6 text-base text-[var(--brand-navy)] hover:bg-[#ffd33d]/92 sm:w-auto",
                   )}
                 >
                   Send Liam a job
@@ -292,7 +321,7 @@ export default function Home() {
                   rel="noreferrer"
                   className={cn(
                     buttonVariants({ variant: "outline", size: "lg" }),
-                    "h-12 rounded-full border-white/14 bg-white/6 px-6 text-base text-white hover:bg-white/12",
+                    "h-12 w-full justify-center rounded-full border-white/14 bg-white/6 px-6 text-base text-white hover:bg-white/12 sm:w-auto",
                   )}
                 >
                   See Liam&apos;s latest work
@@ -320,7 +349,7 @@ export default function Home() {
                   <div
                     key={point}
                     className={cn(
-                      "hero-proof-card",
+                      "hero-proof-card min-w-0",
                       index === 1 && "hero-proof-card-yellow",
                       index === 2 && "hero-proof-card-red",
                     )}
@@ -417,8 +446,8 @@ export default function Home() {
                   key={item.title}
                   className={cn(
                     "overflow-hidden rounded-[1.9rem] border-white/12 bg-white/8 backdrop-blur-sm",
-                    index === 1 && "translate-x-0 lg:translate-x-8",
-                    index === 2 && "translate-x-0 lg:translate-x-16",
+                    index === 1 && "translate-x-0 xl:translate-x-8",
+                    index === 2 && "translate-x-0 xl:translate-x-16",
                   )}
                 >
                   <CardContent className="flex gap-4 p-5 sm:p-6">
@@ -444,6 +473,200 @@ export default function Home() {
                 </Card>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section id="team" className="relative py-14 sm:py-18">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8">
+          <div className="space-y-8 lg:hidden">
+            <SectionIntro
+              dark
+              label="Meet Liam"
+              title="A family-run business from Darwen, built on experience and run with pride."
+              description="L&amp;T Electricals covers Darwen, Lancashire and the wider North West. Liam is the electrician on site, Thara keeps everything moving behind the scenes, and Kian is learning the trade in the right environment: around high standards, honest advice and work finished properly."
+            />
+
+            <div className="image-frame border-white/10 bg-white/8 p-3">
+              <div className="relative flex min-h-[24rem] items-end overflow-hidden rounded-[1.35rem] border border-dashed border-white/18 bg-[linear-gradient(160deg,rgba(255,255,255,0.1),rgba(37,83,255,0.16),rgba(255,211,61,0.12))] p-6 sm:min-h-[30rem]">
+                <div className="absolute inset-x-6 top-6 h-1 rounded-full bg-[linear-gradient(90deg,var(--brand-blue),var(--brand-yellow),var(--brand-red))]" />
+                <div className="absolute right-6 bottom-6 size-28 rounded-full border border-white/12 bg-white/8 blur-2xl" />
+
+                <div className="relative max-w-sm">
+                  <p className="text-xs font-semibold tracking-[0.18em] text-[var(--brand-yellow)] uppercase">
+                    Image slot
+                  </p>
+                  <h3 className="mt-3 font-heading text-3xl leading-none font-semibold text-white sm:text-4xl">
+                    Leave room for Liam.
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-white/72 sm:text-base">
+                    Drop in a portrait here and the section is ready to go. The
+                    frame is already sized to sit naturally with the rest of
+                    the homepage.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-[1.8rem] border border-[#ffd33d]/24 bg-[linear-gradient(135deg,rgba(255,211,61,0.16),rgba(255,255,255,0.08))] p-6 text-white">
+              <p className="text-xs font-semibold tracking-[0.18em] text-[var(--brand-yellow)] uppercase">
+                The insight
+              </p>
+              <p className="mt-4 max-w-xl text-base leading-8 text-white/82">
+                L&amp;T Electricals was started in 2021, but the experience
+                behind it goes back much further. Liam has spent most of his
+                life on the tools, has been qualified for 15 years, and still
+                treats every job with the same pride, attention to detail and
+                proper aftercare. In short: the wires are tidy, the advice is
+                straight, and nobody gets left in the dark.
+              </p>
+            </div>
+
+            <div className="rounded-[2rem] border border-white/12 bg-white/8 p-6 backdrop-blur-sm sm:p-8">
+              <h3 className="font-heading text-2xl leading-none font-semibold text-white">
+                Meet the team behind the business
+              </h3>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-white/74 sm:text-base sm:leading-8">
+                This is a close-knit setup, not a faceless call centre with a
+                van at the end of it. Clients get direct communication, tidy
+                workmanship and the kind of follow-through that gives proper
+                peace of mind from start to finish.
+              </p>
+
+              <div className="mt-6 grid gap-4">
+                {teamRoles.map((member) => {
+                  const Icon = member.icon;
+
+                  return (
+                    <Card
+                      key={member.name}
+                      className="rounded-[1.6rem] border-white/10 bg-white/6 text-white"
+                    >
+                      <CardContent className="flex gap-4 p-5 sm:p-6">
+                        <div
+                          className={cn(
+                            "flex size-12 shrink-0 items-center justify-center rounded-[1rem] text-[var(--brand-navy)]",
+                            member.accent,
+                          )}
+                        >
+                          <Icon className="size-5" />
+                        </div>
+                        <div>
+                          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
+                            <h4 className="font-heading text-xl leading-none font-semibold text-white">
+                              {member.name}
+                            </h4>
+                            <p className="text-sm font-semibold text-[var(--brand-yellow)]">
+                              {member.role}
+                            </p>
+                          </div>
+                          <p className="mt-3 text-sm leading-7 text-white/72">
+                            {member.description}
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden gap-8 lg:grid lg:grid-cols-[0.94fr_1.06fr] lg:items-start">
+            <div className="space-y-5">
+              <div className="image-frame border-white/10 bg-white/8 p-3">
+                <div className="relative flex min-h-[24rem] items-end overflow-hidden rounded-[1.35rem] border border-dashed border-white/18 bg-[linear-gradient(160deg,rgba(255,255,255,0.1),rgba(37,83,255,0.16),rgba(255,211,61,0.12))] p-6 sm:min-h-[30rem]">
+                  <div className="absolute inset-x-6 top-6 h-1 rounded-full bg-[linear-gradient(90deg,var(--brand-blue),var(--brand-yellow),var(--brand-red))]" />
+                  <div className="absolute right-6 bottom-6 size-28 rounded-full border border-white/12 bg-white/8 blur-2xl" />
+
+                  <div className="relative max-w-sm">
+                    <p className="text-xs font-semibold tracking-[0.18em] text-[var(--brand-yellow)] uppercase">
+                      Image slot
+                    </p>
+                    <h3 className="mt-3 font-heading text-3xl leading-none font-semibold text-white sm:text-4xl">
+                      Leave room for Liam.
+                    </h3>
+                    <p className="mt-4 text-sm leading-7 text-white/72 sm:text-base">
+                      Drop in a portrait here and the section is ready to go.
+                      The frame is already sized to sit naturally with the rest
+                      of the homepage.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-[1.8rem] border border-[#ffd33d]/24 bg-[linear-gradient(135deg,rgba(255,211,61,0.16),rgba(255,255,255,0.08))] p-6 text-white">
+                <p className="text-xs font-semibold tracking-[0.18em] text-[var(--brand-yellow)] uppercase">
+                  The insight
+                </p>
+                <p className="mt-4 max-w-xl text-base leading-8 text-white/82">
+                  L&amp;T Electricals was started in 2021, but the experience
+                  behind it goes back much further. Liam has spent most of his
+                  life on the tools, has been qualified for 15 years, and still
+                  treats every job with the same pride, attention to detail and
+                  proper aftercare. In short: the wires are tidy, the advice is
+                  straight, and nobody gets left in the dark.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-8">
+              <SectionIntro
+                dark
+                label="Meet Liam"
+                title="A family-run business from Darwen, built on experience and run with pride."
+                description="L&amp;T Electricals covers Darwen, Lancashire and the wider North West. Liam is the electrician on site, Thara keeps everything moving behind the scenes, and Kian is learning the trade in the right environment: around high standards, honest advice and work finished properly."
+              />
+
+              <div className="rounded-[2rem] border border-white/12 bg-white/8 p-6 backdrop-blur-sm sm:p-8">
+                <h3 className="font-heading text-2xl leading-none font-semibold text-white">
+                  Meet the team behind the business
+                </h3>
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-white/74 sm:text-base sm:leading-8">
+                  This is a close-knit setup, not a faceless call centre with a
+                  van at the end of it. Clients get direct communication, tidy
+                  workmanship and the kind of follow-through that gives proper
+                  peace of mind from start to finish.
+                </p>
+
+                <div className="mt-6 grid gap-4">
+                  {teamRoles.map((member) => {
+                    const Icon = member.icon;
+
+                    return (
+                      <Card
+                        key={member.name}
+                        className="rounded-[1.6rem] border-white/10 bg-white/6 text-white"
+                      >
+                        <CardContent className="flex gap-4 p-5 sm:p-6">
+                          <div
+                            className={cn(
+                              "flex size-12 shrink-0 items-center justify-center rounded-[1rem] text-[var(--brand-navy)]",
+                              member.accent,
+                            )}
+                          >
+                            <Icon className="size-5" />
+                          </div>
+                          <div>
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
+                              <h4 className="font-heading text-xl leading-none font-semibold text-white">
+                                {member.name}
+                              </h4>
+                              <p className="text-sm font-semibold text-[var(--brand-yellow)]">
+                                {member.role}
+                              </p>
+                            </div>
+                            <p className="mt-3 text-sm leading-7 text-white/72">
+                              {member.description}
+                            </p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
