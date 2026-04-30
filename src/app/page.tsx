@@ -277,7 +277,7 @@ export default function Home() {
     <main className="overflow-hidden">
       <Navbar />
 
-      <section className="relative isolate overflow-hidden pt-36 sm:pt-40 lg:pt-32">
+      <section className="relative isolate overflow-hidden pt-36 sm:pt-40 lg:pt-40">
         <div className="hero-orb hero-orb-blue" />
         <div className="hero-orb hero-orb-yellow" />
         <div className="hero-orb hero-orb-red" />

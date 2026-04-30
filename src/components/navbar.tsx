@@ -79,14 +79,14 @@ export function Navbar() {
               : "border-white/12 bg-white/8",
           )}
         >
-          <a href="#" className="flex items-center">
+          <a href="#" className="brand-logo-shell">
             <Image
-              src="/images/logo.png"
+              src="/images/logo-transparent.png"
               alt="L&T Electricals logo"
               width={593}
               height={201}
               priority
-              className="h-auto w-36 sm:w-44"
+              className="relative z-10 h-auto w-36 sm:w-44"
             />
           </a>
 
@@ -134,13 +134,15 @@ export function Navbar() {
               className="border-l border-primary/10 bg-[var(--brand-navy)] p-0 text-white"
             >
               <SheetHeader className="space-y-3 border-b border-white/10 px-6 py-6">
-                <Image
-                  src="/images/logo.png"
-                  alt="L&T Electricals logo"
-                  width={593}
-                  height={201}
-                  className="h-auto w-40"
-                />
+                <div className="brand-logo-shell w-fit">
+                  <Image
+                    src="/images/logo-transparent.png"
+                    alt="L&T Electricals logo"
+                    width={593}
+                    height={201}
+                    className="relative z-10 h-auto w-40"
+                  />
+                </div>
                 <SheetTitle className="text-white">Liam Crooks</SheetTitle>
                 <SheetDescription className="text-white/68">
                   Award-winning electrician for rewires, upgrades, fault

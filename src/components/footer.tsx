@@ -31,13 +31,15 @@ export function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand Column */}
           <div className="space-y-5">
-            <Image
-              src="/images/logo.png"
-              alt="L&T Electricals logo"
-              width={593}
-              height={201}
-              className="h-auto w-40"
-            />
+            <div className="brand-logo-shell w-fit">
+              <Image
+                src="/images/logo-transparent.png"
+                alt="L&T Electricals logo"
+                width={593}
+                height={201}
+                className="relative z-10 h-auto w-40"
+              />
+            </div>
             <p className="text-sm leading-7 text-white/70">
               <span className="text-[#ffd33d] font-semibold">Honest</span>,{" "}
               <span className="text-[#ffd33d] font-semibold">reliable</span> and{" "}
