@@ -1,6 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
+
+import { BrandLogo } from "@/components/brand-logo";
 
 const legalLinks = [
   { label: "Terms & Conditions", href: "/terms" },
@@ -31,15 +32,7 @@ export function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand Column */}
           <div className="space-y-5">
-            <div className="brand-logo-shell w-fit">
-              <Image
-                src="/images/logo-transparent.png"
-                alt="L&T Electricals logo"
-                width={593}
-                height={201}
-                className="relative z-10 h-auto w-40"
-              />
-            </div>
+            <BrandLogo />
             <p className="text-sm leading-7 text-white/70">
               <span className="text-[#ffd33d] font-semibold">Honest</span>,{" "}
               <span className="text-[#ffd33d] font-semibold">reliable</span> and{" "}

@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 
 import { ContactForm } from "@/components/contact-form";
+import { EmergencyButton } from "@/components/emergency-button";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import {
@@ -272,6 +273,21 @@ function ServiceMarquee() {
   );
 }
 
+function FlashBannerCard({ className }: { className?: string }) {
+  return (
+    <div className={cn("flash-banner-card", className)}>
+      <Image
+        src="/images/flash.jpeg"
+        alt="L&T Electricals branded lightning banner"
+        width={1983}
+        height={793}
+        unoptimized
+        className="h-auto w-full object-contain"
+      />
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <main className="overflow-hidden">
@@ -292,7 +308,7 @@ export default function Home() {
 
               <h1 className="headline-balance mt-6 font-heading text-5xl leading-[0.93] font-semibold tracking-tight sm:text-6xl lg:text-7xl">
                 Meet Liam Crooks. Electrical work done properly, by the person
-                whose name is on the van.
+                you speak to from start to finish.
               </h1>
 
               <p className="body-balance mt-6 max-w-2xl text-lg leading-8 text-white/76 sm:text-xl">
@@ -304,7 +320,7 @@ export default function Home() {
                 upgrades, fault finding, EV chargers, lighting, sockets and EICR reports.
               </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a
                   href="#contact"
                   className={cn(
@@ -327,6 +343,7 @@ export default function Home() {
                   See Liam&apos;s latest work
                   <ExternalLink className="size-4" />
                 </a>
+                <EmergencyButton className="border-[#ff8a8a]/55 bg-[#ef4444] font-semibold text-white shadow-[0_18px_46px_-24px_rgba(239,68,68,0.95)] hover:border-[#ffb3b3]/70 hover:bg-[#dc2626]" />
               </div>
 
               <div className="mt-5 flex flex-wrap items-center gap-4 text-sm text-white/72">
@@ -361,45 +378,36 @@ export default function Home() {
             </div>
 
             <div className="hero-stack">
-              <div className="hero-wire hero-wire-blue" />
-              <div className="hero-wire hero-wire-yellow" />
-              <div className="hero-wire hero-wire-red" />
-
-              <div className="media-shell media-shell-main">
+              <div className="hero-service-card">
                 <Image
-                  src="/images/business-specs.png"
-                  alt="L&T Electricals service artwork showing electrical work examples"
-                  width={686}
-                  height={627}
-                  className="pan-image h-full w-full rounded-[1.4rem] object-cover"
-                />
-                <div className="media-overlay">
-                  <p className="media-kicker">L&amp;T Electricals</p>
-                  <h2 className="font-heading text-2xl font-semibold text-white">
-                    Rewires. Fault finding. Upgrades. Reports.
-                  </h2>
-                </div>
-              </div>
-
-              <div className="media-shell media-shell-alt float-card">
-                <Image
-                  src="/images/eicr-reporting.png"
-                  alt="L&T Electricals EICR reporting artwork"
-                  width={648}
-                  height={655}
-                  className="pan-image-alt h-full w-full rounded-[1.25rem] object-cover"
+                  src="/images/electricalservices.jpeg"
+                  alt="L&T Electricals electrical services list covering rewires, outdoor lights, EV chargers, fault finding and EICR reports"
+                  width={1254}
+                  height={1254}
+                  priority
+                  unoptimized
+                  className="h-auto w-full rounded-[1.35rem] object-contain"
                 />
               </div>
+
+              <FlashBannerCard />
 
               <div className="award-panel">
-                <p className="award-panel-kicker">Liam Crooks</p>
-                <h3 className="font-heading text-2xl font-semibold text-[var(--brand-navy)]">
-                  Sparky of the Year 2025
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-[rgb(12_26_75_/_72%)]">
-                  Men In Business Award Winner with more than 18 years of
-                  electrical experience behind the work.
-                </p>
+                <div className="award-panel-content">
+                  <div className="flex size-11 items-center justify-center rounded-full border border-white/24 bg-white/12 text-[#65c7ff]">
+                    <Award className="size-5" />
+                  </div>
+                  <div>
+                    <p className="award-panel-kicker">Liam Crooks</p>
+                    <h3 className="font-heading text-2xl font-semibold text-white">
+                      Sparky of the Year 2025
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-white/74">
+                      Men In Business Award Winner with more than 18 years of
+                      electrical experience behind the work.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -608,6 +616,8 @@ export default function Home() {
                   straight, and nobody gets left in the dark.
                 </p>
               </div>
+
+              <FlashBannerCard className="hidden lg:block" />
             </div>
 
             <div className="space-y-8">
@@ -755,6 +765,8 @@ export default function Home() {
                 on: workmanship, trust, and advice clients can actually use.
               </p>
             </div>
+
+            <FlashBannerCard className="hidden lg:block" />
           </div>
 
           <div className="space-y-8">
@@ -828,6 +840,7 @@ export default function Home() {
                 src="/images/kitchen.png"
                 alt="Domestic electrical work"
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="proof-tile-overlay">
@@ -840,6 +853,7 @@ export default function Home() {
                 src="/images/fusebox.png"
                 alt="Commercial electrical work"
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="proof-tile-overlay">
@@ -852,6 +866,7 @@ export default function Home() {
                 src="/images/garage.png"
                 alt="Industrial electrical work"
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="proof-tile-overlay">
@@ -864,6 +879,7 @@ export default function Home() {
                 src="/images/exteriorhouselighting.png"
                 alt="Repairs and upgrades"
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="proof-tile-overlay">

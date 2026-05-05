@@ -132,10 +132,10 @@
   body {
     @apply text-white;
     background:
-      radial-gradient(circle at top left, rgb(37 83 255 / 0.34), transparent 28%),
-      radial-gradient(circle at 80% 16%, rgb(255 211 61 / 0.22), transparent 18%),
-      radial-gradient(circle at 76% 66%, rgb(239 68 68 / 0.16), transparent 18%),
-      linear-gradient(180deg, #08112e 0%, #0c1a4b 52%, #12296d 100%);
+      radial-gradient(circle at top left, rgb(37 83 255 / 0.38), transparent 28%),
+      radial-gradient(circle at 80% 16%, rgb(96 198 255 / 0.24), transparent 20%),
+      radial-gradient(circle at 76% 66%, rgb(255 211 61 / 0.12), transparent 18%),
+      linear-gradient(180deg, #061335 0%, #0c1a4b 52%, #0b2b82 100%);
     background-attachment: fixed;
     text-rendering: optimizeLegibility;
   }
@@ -220,11 +220,30 @@
   }
 
   .brand-logo-shell {
-    @apply relative isolate inline-flex items-center overflow-hidden rounded-full border border-white/18 px-3 py-2 shadow-[0_18px_48px_-28px_rgba(0,0,0,0.72)] backdrop-blur-md transition-transform duration-300 hover:scale-[1.015];
+    @apply relative isolate inline-flex w-fit items-center gap-2.5 overflow-hidden rounded-full border border-white/18 px-3 py-2 shadow-[0_18px_48px_-28px_rgba(0,0,0,0.72)] backdrop-blur-md transition-transform duration-300 hover:scale-[1.015];
     background:
       linear-gradient(135deg, rgb(255 255 255 / 0.96), rgb(238 244 255 / 0.78)),
       radial-gradient(circle at 18% 50%, rgb(37 83 255 / 0.16), transparent 42%),
       radial-gradient(circle at 92% 12%, rgb(255 211 61 / 0.22), transparent 38%);
+  }
+
+  .brand-logo-mark {
+    @apply relative z-10 flex size-9 shrink-0 items-center justify-center rounded-[0.7rem] bg-[linear-gradient(135deg,#2553ff,#0b69ff)] shadow-[0_10px_24px_-14px_rgba(37,83,255,0.9)];
+  }
+
+  .brand-logo-type {
+    @apply relative z-10 flex flex-col justify-center leading-none text-[var(--brand-navy)];
+    font-family: Arial, Helvetica, sans-serif;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .brand-logo-primary {
+    @apply text-[1.45rem] font-black;
+  }
+
+  .brand-logo-secondary {
+    @apply -mt-0.5 text-[1.04rem] font-medium;
   }
 
   .brand-logo-shell::after {
@@ -281,7 +300,7 @@
     right: 8%;
     height: 14rem;
     width: 14rem;
-    background: rgb(255 211 61 / 0.26);
+    background: rgb(96 198 255 / 0.24);
   }
 
   .hero-orb-red {
@@ -289,11 +308,11 @@
     bottom: 3rem;
     height: 11rem;
     width: 11rem;
-    background: rgb(239 68 68 / 0.22);
+    background: rgb(37 83 255 / 0.2);
   }
 
   .hero-badge {
-    @apply h-auto w-full max-w-full shrink whitespace-normal sm:w-fit sm:whitespace-nowrap inline-flex flex-wrap items-center justify-start gap-2 rounded-[1.2rem] border border-white/12 bg-white/10 px-3 py-2 text-sm leading-6 text-white backdrop-blur-sm;
+    @apply h-auto w-full max-w-full shrink whitespace-normal sm:w-fit sm:whitespace-nowrap inline-flex flex-wrap items-center justify-start gap-2 rounded-[1.2rem] border border-[#65c7ff]/34 bg-[#0b69ff]/18 px-3 py-2 text-sm leading-6 text-white shadow-[0_18px_46px_-30px_rgba(96,198,255,0.72)] backdrop-blur-sm;
   }
 
   .hero-proof-card {
@@ -310,7 +329,46 @@
   }
 
   .hero-stack {
-    @apply relative min-h-[30rem] lg:min-h-[38rem];
+    @apply relative flex flex-col gap-5 lg:items-end;
+  }
+
+  .hero-service-card {
+    @apply relative isolate w-full max-w-[38rem] overflow-hidden rounded-[2rem] border border-[#60c6ff]/28 bg-[#f8fbff] p-3 shadow-[0_34px_110px_-52px_rgba(0,0,0,0.8)];
+  }
+
+  .hero-service-card::before {
+    content: "";
+    position: absolute;
+    inset: -30%;
+    background:
+      radial-gradient(circle at 72% 24%, rgb(96 198 255 / 0.26), transparent 24%),
+      radial-gradient(circle at 18% 82%, rgb(37 83 255 / 0.2), transparent 24%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-service-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background: linear-gradient(
+      116deg,
+      transparent 0 38%,
+      rgb(255 255 255 / 0.92) 45%,
+      rgb(85 196 255 / 0.86) 48%,
+      transparent 57% 100%
+    );
+    filter: blur(0.5px);
+    mix-blend-mode: screen;
+    opacity: 0;
+    transform: translateX(-130%) skewX(-8deg);
+    animation: electric-flash 6s ease-in-out infinite;
+  }
+
+  .hero-service-card > img {
+    @apply relative z-10;
   }
 
   .hero-wire {
@@ -357,7 +415,7 @@
   .media-shell-alt {
     right: 0;
     bottom: 0;
-    width: min(55%, 19rem);
+    width: min(64%, 24rem);
     transform: rotate(6deg);
   }
 
@@ -370,11 +428,38 @@
   }
 
   .award-panel {
-    @apply absolute left-6 bottom-10 max-w-[18rem] rounded-[1.5rem] border border-white/16 bg-white p-5 shadow-[0_24px_70px_-44px_rgba(0,0,0,0.7)];
+    @apply relative isolate w-full max-w-[34rem] overflow-hidden rounded-[1.5rem] border border-[#60c6ff]/32 bg-[#071c55] p-5 shadow-[0_24px_80px_-44px_rgba(0,0,0,0.76)];
+  }
+
+  .award-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgb(7 28 85 / 0.96), rgb(7 28 85 / 0.64) 58%, rgb(7 28 85 / 0.18)),
+      radial-gradient(circle at 78% 30%, rgb(96 198 255 / 0.28), transparent 28%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .award-panel-content {
+    @apply relative z-10 flex items-start gap-4;
   }
 
   .award-panel-kicker {
-    @apply text-[0.72rem] font-semibold tracking-[0.18em] text-primary uppercase;
+    @apply text-[0.72rem] font-semibold tracking-[0.18em] text-[#65c7ff] uppercase;
+  }
+
+  .flash-banner-card {
+    @apply relative isolate w-full max-w-[38rem] overflow-hidden rounded-[1.5rem] border border-[#60c6ff]/28 bg-[#071c55] shadow-[0_24px_80px_-52px_rgba(0,0,0,0.76)];
+  }
+
+  .flash-banner-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgb(7 28 85 / 0.08), transparent 40%, rgb(96 198 255 / 0.14));
+    pointer-events: none;
   }
 
   .signal-band {
@@ -478,7 +563,7 @@
 
   @media (max-width: 1023px) {
     .hero-stack {
-      @apply mt-2 min-h-0;
+      @apply mt-2;
     }
 
     .hero-wire {
@@ -502,7 +587,7 @@
     }
 
     .award-panel {
-      @apply relative left-auto bottom-auto mt-4 max-w-full;
+      @apply max-w-full;
     }
   }
 
@@ -518,7 +603,7 @@
     }
 
     .media-shell-alt {
-      max-width: 30rem;
+      max-width: 38rem;
       margin-inline: auto;
     }
 
@@ -561,6 +646,23 @@
   }
 }
 
+@keyframes electric-flash {
+  0%,
+  88%,
+  100% {
+    opacity: 0;
+    transform: translateX(-130%) skewX(-8deg);
+  }
+  92% {
+    opacity: 0.95;
+    transform: translateX(8%) skewX(-8deg);
+  }
+  96% {
+    opacity: 0;
+    transform: translateX(130%) skewX(-8deg);
+  }
+}
+
 @keyframes pan-image-main {
   0%,
   100% {
@@ -589,7 +691,8 @@
   .wire-track,
   .pan-image,
   .pan-image-alt,
-  .float-card {
+  .float-card,
+  .hero-service-card::after {
     animation: none;
   }
 }
