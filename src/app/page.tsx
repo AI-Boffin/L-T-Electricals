@@ -5,11 +5,9 @@ import {
   Building2,
   CarFront,
   CheckCircle2,
-  ClipboardList,
   ExternalLink,
   Factory,
   FileCheck2,
-  HardHat,
   House,
   Lightbulb,
   Mail,
@@ -89,24 +87,24 @@ const teamRoles = [
     role: "Electrician",
     description:
       "Qualified for 15 years and on the tools long before that. Liam leads the work on site with a sharp eye for detail and a straight answer when clients need one.",
-    icon: Zap,
-    accent: "bg-[#2553ff]",
+    imageSrc: "/images/ailiam.png",
+    imageAlt: "Liam Crooks",
   },
   {
     name: "Thara Crooks",
     role: "Office & admin",
     description:
       "Thara keeps the diary, the messages and the follow-up moving, so jobs stay organised from first call to final aftercare.",
-    icon: ClipboardList,
-    accent: "bg-[#ffd33d]",
+    imageSrc: "/images/thara2.png",
+    imageAlt: "Thara Crooks",
   },
   {
     name: "Kian Duckworth",
     role: "Apprentice",
     description:
       "Kian is learning the trade the right way: on real jobs, around proper standards, and with the same pride in neat work the business is known for.",
-    icon: HardHat,
-    accent: "bg-[#ef4444]",
+    imageSrc: "/images/kian.png",
+    imageAlt: "Kian Duckworth",
   },
 ];
 
@@ -495,24 +493,15 @@ export default function Home() {
               description="L&amp;T Electricals covers Darwen, Lancashire and the wider North West. Liam is the electrician on site, Thara keeps everything moving behind the scenes, and Kian is learning the trade in the right environment: around high standards, honest advice and work finished properly."
             />
 
-            <div className="image-frame border-white/10 bg-white/8 p-3">
-              <div className="relative flex min-h-[24rem] items-end overflow-hidden rounded-[1.35rem] border border-dashed border-white/18 bg-[linear-gradient(160deg,rgba(255,255,255,0.1),rgba(37,83,255,0.16),rgba(255,211,61,0.12))] p-6 sm:min-h-[30rem]">
-                <div className="absolute inset-x-6 top-6 h-1 rounded-full bg-[linear-gradient(90deg,var(--brand-blue),var(--brand-yellow),var(--brand-red))]" />
-                <div className="absolute right-6 bottom-6 size-28 rounded-full border border-white/12 bg-white/8 blur-2xl" />
-
-                <div className="relative max-w-sm">
-                  <p className="text-xs font-semibold tracking-[0.18em] text-[var(--brand-yellow)] uppercase">
-                    Image slot
-                  </p>
-                  <h3 className="mt-3 font-heading text-3xl leading-none font-semibold text-white sm:text-4xl">
-                    Leave room for Liam.
-                  </h3>
-                  <p className="mt-4 text-sm leading-7 text-white/72 sm:text-base">
-                    Drop in a portrait here and the section is ready to go. The
-                    frame is already sized to sit naturally with the rest of
-                    the homepage.
-                  </p>
-                </div>
+            <div className="image-frame mx-auto max-w-[24.5rem] border-white/10 bg-white/8 p-1">
+              <div className="relative min-h-[21.5rem] overflow-hidden rounded-[1.35rem] border border-white/18 bg-[radial-gradient(circle_at_50%_18%,rgba(255,211,61,0.16),transparent_34%),linear-gradient(160deg,rgba(255,255,255,0.08),rgba(37,83,255,0.12))] sm:min-h-[27rem]">
+                <Image
+                  src="/images/awardliam.png"
+                  alt="Liam Crooks with his Sparky of the Year award"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 38vw"
+                  className="rounded-[1.15rem] object-contain p-1.5 drop-shadow-[0_20px_32px_rgba(0,0,0,0.26)]"
+                />
               </div>
             </div>
 
@@ -543,21 +532,20 @@ export default function Home() {
 
               <div className="mt-6 grid gap-4">
                 {teamRoles.map((member) => {
-                  const Icon = member.icon;
-
                   return (
                     <Card
                       key={member.name}
                       className="rounded-[1.6rem] border-white/10 bg-white/6 text-white"
                     >
                       <CardContent className="flex gap-4 p-5 sm:p-6">
-                        <div
-                          className={cn(
-                            "flex size-12 shrink-0 items-center justify-center rounded-[1rem] text-[var(--brand-navy)]",
-                            member.accent,
-                          )}
-                        >
-                          <Icon className="size-5" />
+                        <div className="relative h-20 w-16 shrink-0 overflow-hidden rounded-[1rem] border border-white/12 bg-white/10 sm:h-24 sm:w-20">
+                          <Image
+                            src={member.imageSrc}
+                            alt={member.imageAlt}
+                            fill
+                            sizes="80px"
+                            className="object-cover"
+                          />
                         </div>
                         <div>
                           <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
@@ -582,24 +570,15 @@ export default function Home() {
 
           <div className="hidden gap-8 lg:grid lg:grid-cols-[0.94fr_1.06fr] lg:items-start">
             <div className="space-y-5">
-              <div className="image-frame border-white/10 bg-white/8 p-3">
-                <div className="relative flex min-h-[24rem] items-end overflow-hidden rounded-[1.35rem] border border-dashed border-white/18 bg-[linear-gradient(160deg,rgba(255,255,255,0.1),rgba(37,83,255,0.16),rgba(255,211,61,0.12))] p-6 sm:min-h-[30rem]">
-                  <div className="absolute inset-x-6 top-6 h-1 rounded-full bg-[linear-gradient(90deg,var(--brand-blue),var(--brand-yellow),var(--brand-red))]" />
-                  <div className="absolute right-6 bottom-6 size-28 rounded-full border border-white/12 bg-white/8 blur-2xl" />
-
-                  <div className="relative max-w-sm">
-                    <p className="text-xs font-semibold tracking-[0.18em] text-[var(--brand-yellow)] uppercase">
-                      Image slot
-                    </p>
-                    <h3 className="mt-3 font-heading text-3xl leading-none font-semibold text-white sm:text-4xl">
-                      Leave room for Liam.
-                    </h3>
-                    <p className="mt-4 text-sm leading-7 text-white/72 sm:text-base">
-                      Drop in a portrait here and the section is ready to go.
-                      The frame is already sized to sit naturally with the rest
-                      of the homepage.
-                    </p>
-                  </div>
+              <div className="image-frame mx-auto max-w-[24.5rem] border-white/10 bg-white/8 p-1">
+                <div className="relative min-h-[21.5rem] overflow-hidden rounded-[1.35rem] border border-white/18 bg-[radial-gradient(circle_at_50%_18%,rgba(255,211,61,0.16),transparent_34%),linear-gradient(160deg,rgba(255,255,255,0.08),rgba(37,83,255,0.12))] sm:min-h-[27rem]">
+                  <Image
+                    src="/images/awardliam.png"
+                    alt="Liam Crooks with his Sparky of the Year award"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 38vw"
+                    className="rounded-[1.15rem] object-contain p-1.5 drop-shadow-[0_20px_32px_rgba(0,0,0,0.26)]"
+                  />
                 </div>
               </div>
 
@@ -641,21 +620,20 @@ export default function Home() {
 
                 <div className="mt-6 grid gap-4">
                   {teamRoles.map((member) => {
-                    const Icon = member.icon;
-
                     return (
                       <Card
                         key={member.name}
                         className="rounded-[1.6rem] border-white/10 bg-white/6 text-white"
                       >
                         <CardContent className="flex gap-4 p-5 sm:p-6">
-                          <div
-                            className={cn(
-                              "flex size-12 shrink-0 items-center justify-center rounded-[1rem] text-[var(--brand-navy)]",
-                              member.accent,
-                            )}
-                          >
-                            <Icon className="size-5" />
+                          <div className="relative h-20 w-16 shrink-0 overflow-hidden rounded-[1rem] border border-white/12 bg-white/10 sm:h-24 sm:w-20">
+                            <Image
+                              src={member.imageSrc}
+                              alt={member.imageAlt}
+                              fill
+                              sizes="80px"
+                              className="object-cover"
+                            />
                           </div>
                           <div>
                             <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">

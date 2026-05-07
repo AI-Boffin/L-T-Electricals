@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
@@ -17,17 +17,9 @@ function escapeHtml(value: string) {
 }
 
 export async function POST(request: Request) {
-  const {
-    CONTACT_FROM_EMAIL,
-    CONTACT_TO_EMAIL,
-    SMTP_HOST,
-    SMTP_PASS,
-    SMTP_PORT,
-    SMTP_SECURE,
-    SMTP_USER,
-  } = process.env;
+  const { CONTACT_FROM_EMAIL, CONTACT_TO_EMAIL, RESEND_API_KEY } = process.env;
 
-  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !CONTACT_TO_EMAIL) {
+  if (!RESEND_API_KEY || !CONTACT_FROM_EMAIL || !CONTACT_TO_EMAIL) {
     return Response.json(
       {
         error:
@@ -63,19 +55,13 @@ export async function POST(request: Request) {
     );
   }
 
-  const transporter = nodemailer.createTransport({
-    auth: { pass: SMTP_PASS, user: SMTP_USER },
-    host: SMTP_HOST,
-    port: Number(SMTP_PORT ?? 587),
-    secure: SMTP_SECURE === "true" || SMTP_PORT === "465",
-  });
-
   const submittedAt = new Date().toLocaleString("en-GB", {
     timeZone: "Europe/London",
   });
 
-  await transporter.sendMail({
-    from: CONTACT_FROM_EMAIL ?? SMTP_USER,
+  const resend = new Resend(RESEND_API_KEY);
+  const { error } = await resend.emails.send({
+    from: CONTACT_FROM_EMAIL,
     headers: {
       Importance: "high",
       "X-Priority": "1",
@@ -89,7 +75,6 @@ export async function POST(request: Request) {
       <p><strong>Submitted:</strong> ${escapeHtml(submittedAt)}</p>
       <p style="margin-top:16px;color:#555;">Sent automatically from ltelectricals website.</p>
     `,
-    priority: "high",
     subject: `EMERGENCY CALL OUT - ${name} - ${phone}`,
     text: `EMERGENCY CALL OUT REQUEST
 
@@ -102,6 +87,17 @@ Sent automatically from ltelectricals website.
 `,
     to: CONTACT_TO_EMAIL,
   });
+
+  if (error) {
+    console.error("Resend emergency email failed", error);
+    return Response.json(
+      {
+        error:
+          "Could not send the emergency request right now. Please call 07485 035381 directly.",
+      },
+      { status: 502 },
+    );
+  }
 
   return Response.json({
     message: "Emergency request sent. Liam has been alerted and will call you back as soon as possible.",

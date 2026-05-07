@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
@@ -23,21 +23,13 @@ function escapeHtml(value: string) {
 }
 
 export async function POST(request: Request) {
-  const {
-    CONTACT_FROM_EMAIL,
-    CONTACT_TO_EMAIL,
-    SMTP_HOST,
-    SMTP_PASS,
-    SMTP_PORT,
-    SMTP_SECURE,
-    SMTP_USER,
-  } = process.env;
+  const { CONTACT_FROM_EMAIL, CONTACT_TO_EMAIL, RESEND_API_KEY } = process.env;
 
-  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !CONTACT_TO_EMAIL) {
+  if (!RESEND_API_KEY || !CONTACT_FROM_EMAIL || !CONTACT_TO_EMAIL) {
     return Response.json(
       {
         error:
-          "Email delivery is not configured yet. Add the SMTP settings and destination address first.",
+          "Email delivery is not configured yet. Add the Resend API key, sender, and destination address first.",
       },
       { status: 503 },
     );
@@ -109,16 +101,6 @@ export async function POST(request: Request) {
     );
   }
 
-  const transporter = nodemailer.createTransport({
-    auth: {
-      pass: SMTP_PASS,
-      user: SMTP_USER,
-    },
-    host: SMTP_HOST,
-    port: Number(SMTP_PORT ?? 587),
-    secure: SMTP_SECURE === "true" || SMTP_PORT === "465",
-  });
-
   const attachments = await Promise.all(
     files.map(async (file) => ({
       content: Buffer.from(await file.arrayBuffer()),
@@ -137,9 +119,10 @@ export async function POST(request: Request) {
       ? attachments.map((file) => `- ${file.filename}`).join("\n")
       : "- No attachments supplied";
 
-  await transporter.sendMail({
+  const resend = new Resend(RESEND_API_KEY);
+  const { error } = await resend.emails.send({
     attachments,
-    from: CONTACT_FROM_EMAIL ?? SMTP_USER,
+    from: CONTACT_FROM_EMAIL,
     html: `
       <h2>New website enquiry for L&amp;T Electricals</h2>
       <p><strong>Name:</strong> ${escapeHtml(name)}</p>
@@ -170,6 +153,14 @@ ${textSummary}
 `,
     to: CONTACT_TO_EMAIL,
   });
+
+  if (error) {
+    console.error("Resend contact email failed", error);
+    return Response.json(
+      { error: "The enquiry could not be sent right now." },
+      { status: 502 },
+    );
+  }
 
   return Response.json({
     message: "Thanks. Your enquiry has been sent to Liam successfully.",
