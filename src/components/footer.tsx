@@ -116,9 +116,22 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-          <p className="text-sm text-white/60">
-            &copy; {currentYear} L&T Electricals. All rights reserved.
-          </p>
+          <div className="text-center sm:text-left">
+            <p className="text-sm text-white/60">
+              &copy; {currentYear} L&T Electricals. All rights reserved.
+            </p>
+            <p className="mt-1 text-xs text-white/42">
+              Website by{" "}
+              <a
+                href="https://itboffins.com/"
+                target="_blank"
+                rel="sponsored noopener noreferrer"
+                className="font-medium text-white/55 hover:text-[#ffd33d]"
+              >
+                IT Boffins
+              </a>
+            </p>
+          </div>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             {legalLinks.map((link) => (
               <Link

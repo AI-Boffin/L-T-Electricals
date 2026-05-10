@@ -19,9 +19,6 @@ export const metadata: Metadata = {
   title: "L&T Electricals | Darwen Electrician Liam Crooks",
   description:
     "Darwen electrician Liam Crooks runs L&T Electricals, delivering insured and qualified residential, commercial, industrial, and EICR electrical services.",
-  icons: {
-    icon: "/images/logo.png",
-  },
 };
 
 export default function RootLayout({
