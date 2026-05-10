@@ -245,7 +245,7 @@ export function ContactForm() {
             multiple
             accept="image/*,video/*"
             onChange={handleFileChange}
-            className="h-auto cursor-pointer rounded-2xl border-white/12 bg-white/8 px-3 py-2.5 text-white file:mr-3 file:rounded-full file:border-0 file:bg-[#ffd33d] file:px-4 file:py-2 file:text-sm file:font-medium file:text-[#0c1a4b]"
+            className="h-auto cursor-pointer rounded-2xl border-white/12 bg-white/8 px-3 py-2.5 text-white file:mr-3 file:inline-flex file:h-9 file:items-center file:justify-center file:rounded-full file:border-0 file:bg-[#ffd33d] file:px-4 file:py-0 file:text-sm file:font-medium file:leading-none file:text-[#0c1a4b]"
           />
           <p className="text-sm leading-6 text-white/55">
             Up to {MAX_FILES} files, 15MB total. Images and short video clips

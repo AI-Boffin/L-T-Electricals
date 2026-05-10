@@ -10,17 +10,17 @@ const legalLinks = [
 ];
 
 const serviceLinks = [
-  { label: "Domestic", href: "#services" },
-  { label: "Commercial", href: "#services" },
-  { label: "Industrial", href: "#services" },
-  { label: "EICR Reports", href: "#eicr" },
+  { label: "Domestic", href: "/#services" },
+  { label: "Commercial", href: "/#services" },
+  { label: "Industrial", href: "/#services" },
+  { label: "EICR Reports", href: "/#eicr" },
 ];
 
 const navLinks = [
-  { label: "Why Liam", href: "#liam" },
-  { label: "Services", href: "#services" },
-  { label: "EICR", href: "#eicr" },
-  { label: "Contact", href: "#contact" },
+  { label: "Why Liam", href: "/#liam" },
+  { label: "Services", href: "/#services" },
+  { label: "EICR", href: "/#eicr" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function Footer() {
@@ -50,12 +50,12 @@ export function Footer() {
             <ul className="space-y-3">
               {serviceLinks.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-white/70 transition-colors hover:text-[#ffd33d]"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -69,12 +69,12 @@ export function Footer() {
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-white/70 transition-colors hover:text-[#ffd33d]"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
